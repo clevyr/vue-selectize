@@ -105,6 +105,14 @@ createItem: {
 },
 ```
 
+## alwaysShowCreate
+
+Forces create to show, even if filtered entries are available
+
+```js
+alwaysShowCreate: { default: false, type: Boolean },
+```
+
 ## searchFn
 
 User-defined function for searching

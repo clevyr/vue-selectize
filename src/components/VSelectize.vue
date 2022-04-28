@@ -57,11 +57,12 @@
 
         <div
           v-if="
-            !filteredOptions.length &&
+            (alwaysShowCreate || !filteredOptions.length) &&
             searchText.length &&
             typeof createItem === 'function'
           "
-          class="option create active"
+          class="option create"
+          :class="{ active: !filteredOptions.length }"
           @click="selectActiveOption"
           data-selectable
         >
@@ -152,6 +153,11 @@ export default {
       },
       type: [Function, Boolean],
     },
+
+    /**
+     * Forces create to show, even if filtered entries are available
+     */
+    alwaysShowCreate: { default: false, type: Boolean },
 
     searchFn: { default: false, type: [Boolean, Function] },
 
