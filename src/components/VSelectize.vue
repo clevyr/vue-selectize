@@ -43,19 +43,6 @@
     >
       <div class="selectize-dropdown-content">
         <div
-          v-on:mouseover="activateOption(option)"
-          data-selectable
-          :key="option[keyBy]"
-          v-for="option in filteredOptions"
-          class="option"
-          :class="getOptionClassName(option)"
-          :data-value="option[keyBy]"
-          @click="selectOption(option)"
-        >
-          <slot name="option" v-bind:option="option">{{ option[label] }}</slot>
-        </div>
-
-        <div
           v-if="
             (alwaysShowCreate || !filteredOptions.length) &&
             searchText.length &&
@@ -70,6 +57,18 @@
             Add <strong>{{ searchText }}</strong
             >...
           </slot>
+        </div>
+        <div
+          v-on:mouseover="activateOption(option)"
+          data-selectable
+          :key="option[keyBy]"
+          v-for="option in filteredOptions"
+          class="option"
+          :class="getOptionClassName(option)"
+          :data-value="option[keyBy]"
+          @click="selectOption(option)"
+        >
+          <slot name="option" v-bind:option="option">{{ option[label] }}</slot>
         </div>
       </div>
     </div>
